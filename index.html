@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freddy Hany Edward — Software Developer</title>
+<meta name="description" content="Software developer in Cairo building WordPress and Laravel systems. 15+ live client projects across Egypt, the Gulf and the UK.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="theme-color" content="#0A0B0D">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Freddy Hany Edward — Software Developer">
+<meta property="og:description" content="WordPress and Laravel developer in Cairo. 15+ live client projects across Egypt, the Gulf and the UK.">
+<meta property="og:image" content="assets/webops.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* ============================================================
+   Freddy Hany Edward — portfolio
+   Dark-first. One electric-blue accent, violet only in the mesh.
+   Work is shown as real screenshots in browser chrome.
+   ============================================================ */
+
+:root{
+  --bg:#0A0B0D;
+  --surface:#121419;
+  --raised:#181B22;
+  --ink:#F2F4F8;
+  --ink-dim:#C6CCD8;
+  --muted:#8E97A8;
+  --line:#23272F;
+  --line-soft:#1A1E25;
+  --accent:#5B8CFF;
+  --accent-ink:#06080D;
+  --violet:#8B5CF6;
+  --live:#3DD68C;
+
+  --font-display:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  --shell:1200px;
+  --gut:clamp(20px,5vw,48px);
+  --r:16px;
+  color-scheme:dark;
+}
+
+html[data-theme="light"]{
+  --bg:#FAFAFB;
+  --surface:#FFFFFF;
+  --raised:#F3F4F7;
+  --ink:#0E1116;
+  --ink-dim:#2C323D;
+  --muted:#5C6473;
+  --line:#E4E7EC;
+  --line-soft:#EDEFF3;
+  --accent:#2457D6;
+  --accent-ink:#FFFFFF;
+  --violet:#6D3FD4;
+  --live:#17955C;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:var(--gut)}
+
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-.025em;line-height:1.1}
+p{margin:0}
+
+.mono{font-family:var(--font-mono)}
+
+/* ---------- grain + mesh ---------- */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.038;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html[data-theme="light"] .grain{opacity:.02}
+
+.mesh{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+.blob.a{width:620px;height:620px;background:var(--accent);top:-260px;left:-120px;opacity:.26}
+.blob.b{width:520px;height:520px;background:var(--violet);top:-120px;right:-160px;opacity:.2}
+.blob.c{width:460px;height:460px;background:var(--live);bottom:-280px;left:38%;opacity:.1}
+html[data-theme="light"] .blob{filter:blur(110px)}
+html[data-theme="light"] .blob.a{opacity:.17}
+html[data-theme="light"] .blob.b{opacity:.13}
+html[data-theme="light"] .blob.c{opacity:.08}
+@media (prefers-reduced-motion:no-preference){
+  .blob.a{animation:drift 22s ease-in-out infinite alternate}
+  .blob.b{animation:drift 28s ease-in-out infinite alternate-reverse}
+  .blob.c{animation:drift 34s ease-in-out infinite alternate}
+}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(40px,30px,0) scale(1.12)}}
+
+/* ---------- scroll progress ---------- */
+#prog{
+  position:fixed;top:0;left:0;height:2px;width:100%;z-index:60;
+  background:linear-gradient(90deg,var(--accent),var(--violet));
+  transform:scaleX(0);transform-origin:0 50%;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  border-bottom:1px solid transparent;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+}
+.nav.stuck{
+  background:color-mix(in srgb,var(--bg) 82%,transparent);
+  -webkit-backdrop-filter:blur(14px) saturate(1.5);
+  backdrop-filter:blur(14px) saturate(1.5);
+  border-bottom-color:var(--line);
+}
+@supports not (backdrop-filter:blur(2px)){ .nav.stuck{background:var(--bg)} }
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
+
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.01em}
+/* photo in a thin gradient ring — keeps the accent without a monogram */
+.brand-mark{
+  width:34px;height:34px;border-radius:50%;flex:0 0 auto;padding:1.5px;
+  background:linear-gradient(135deg,var(--accent),var(--violet));
+}
+.brand-mark img{
+  width:100%;height:100%;border-radius:50%;object-fit:cover;
+  display:block;background:var(--raised);
+}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{
+  font-family:var(--font-mono);font-size:12.5px;color:var(--muted);
+  padding:8px 11px;border-radius:8px;transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--ink);background:var(--raised)}
+.nav-links a.on{color:var(--accent)}
+
+.nav-right{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  width:36px;height:36px;border-radius:10px;flex:0 0 auto;
+  display:grid;place-items:center;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink);
+  transition:border-color .2s,transform .2s;
+}
+.icon-btn:hover{border-color:var(--muted);transform:translateY(-1px)}
+.icon-btn svg{width:17px;height:17px}
+html[data-theme="dark"] .i-sun{display:block}
+html[data-theme="dark"] .i-moon{display:none}
+html[data-theme="light"] .i-sun{display:none}
+html[data-theme="light"] .i-moon{display:block}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-size:14px;font-weight:600;
+  padding:11px 19px;border-radius:11px;cursor:pointer;border:1px solid transparent;
+  transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 22px -8px var(--accent)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px var(--accent)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--muted);transform:translateY(-2px)}
+@media (max-width:860px){ .nav-links{display:none} }
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){ .js .rv{opacity:1;transform:none;transition:none} }
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:clamp(64px,11vw,130px) clamp(48px,7vw,76px);z-index:2}
+.hero-in{position:relative;z-index:2}
+.tagline{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-dim);background:var(--surface);border:1px solid var(--line);
+  padding:7px 14px;border-radius:999px;margin-bottom:26px;
+}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--live);flex:0 0 auto;box-shadow:0 0 0 3px color-mix(in srgb,var(--live) 25%,transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .pulse{animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px color-mix(in srgb,var(--live) 25%,transparent)}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--live) 6%,transparent)}}
+}
+
+.hero h1{font-size:clamp(40px,8.4vw,86px);font-weight:700;letter-spacing:-.04em;margin-bottom:10px}
+.hero h1 .grad{
+  background:linear-gradient(100deg,var(--accent),var(--violet) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-role{font-family:var(--font-mono);font-size:clamp(13px,2.2vw,16px);color:var(--muted);margin-bottom:28px}
+.hero-lead{font-size:clamp(17px,2.3vw,21px);line-height:1.55;color:var(--ink-dim);max-width:60ch;margin-bottom:16px}
+.hero-sub{color:var(--muted);max-width:58ch;margin-bottom:34px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--surface);padding:20px 22px}
+.stat b{display:block;font-family:var(--font-display);font-size:clamp(26px,4vw,34px);font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;position:relative;z-index:2}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--surface),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--surface),transparent)}
+.mq-track{display:flex;width:max-content;padding-block:16px}
+@media (prefers-reduced-motion:no-preference){ .mq-track{animation:slide 42s linear infinite} }
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-track span{
+  font-family:var(--font-mono);font-size:13px;color:var(--muted);
+  padding-inline:22px;white-space:nowrap;display:inline-flex;align-items:center;gap:22px;
+}
+.mq-track span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.55}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:2;padding-block:clamp(60px,9vw,110px)}
+.sec-head{margin-bottom:clamp(32px,5vw,54px);max-width:62ch}
+.eyebrow{display:flex;align-items:center;gap:11px;font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sec-head h2{font-size:clamp(27px,4.4vw,42px);font-weight:700;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:17px;max-width:58ch}
+
+/* ---------- featured work ---------- */
+.feat{display:grid;gap:clamp(56px,8vw,104px)}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(28px,4.5vw,56px);align-items:center}
+.case:nth-child(even) .case-text{order:2}
+.case:nth-child(even) .shot{order:1}
+@media (max-width:900px){
+  .case{grid-template-columns:minmax(0,1fr);gap:28px}
+  .case:nth-child(even) .case-text,.case:nth-child(even) .shot{order:initial}
+}
+
+.case-kind{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tint,var(--accent));border:1px solid currentColor;border-radius:999px;padding:4px 12px;margin-bottom:18px}
+.case-text h3{font-size:clamp(24px,3.4vw,34px);font-weight:700;margin-bottom:14px}
+.case-text p{color:var(--muted);margin-bottom:12px}
+.case-text p strong{color:var(--ink-dim);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 22px}
+.chip{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-dim);background:var(--raised);border:1px solid var(--line);border-radius:7px;padding:5px 10px;white-space:nowrap}
+.visit{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:13.5px;color:var(--accent);word-break:break-word}
+.visit:hover{text-decoration:underline;text-underline-offset:4px}
+.visit svg{width:13px;height:13px;flex:0 0 auto;transition:transform .2s}
+.visit:hover svg{transform:translate(2px,-2px)}
+
+/* browser chrome */
+.shot{position:relative;min-width:0}
+.shot::after{
+  content:"";position:absolute;inset:14% 6% -8%;z-index:0;border-radius:50%;
+  background:var(--tint,var(--accent));filter:blur(64px);opacity:.3;transition:opacity .4s;
+}
+html[data-theme="light"] .shot::after{opacity:.2}
+.shot:hover::after{opacity:.45}
+.frame{
+  position:relative;z-index:1;border-radius:13px;overflow:hidden;
+  border:1px solid var(--line);background:var(--surface);
+  box-shadow:0 26px 60px -24px rgba(0,0,0,.6);
+  transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;
+}
+html[data-theme="light"] .frame{box-shadow:0 26px 60px -28px rgba(16,22,40,.4)}
+.shot:hover .frame{transform:translateY(-7px);box-shadow:0 38px 74px -26px rgba(0,0,0,.66)}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 13px;background:var(--raised);border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:6px;flex:0 0 auto}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.dots i:first-child{background:#FF5F57}.dots i:nth-child(2){background:#FEBC2E}.dots i:nth-child(3){background:#28C840}
+.url{
+  flex:1;min-width:0;font-family:var(--font-mono);font-size:11px;color:var(--muted);
+  background:var(--surface);border-radius:6px;padding:4px 10px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
+}
+.frame img{width:100%;height:auto;aspect-ratio:1280/800;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.shot:hover .frame img{transform:scale(1.035)}
+
+/* ---------- work grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;margin-top:clamp(52px,7vw,80px)}
+.card{
+  display:flex;flex-direction:column;min-width:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;
+}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--tint,var(--accent)) 50%,var(--line));box-shadow:0 22px 44px -24px rgba(0,0,0,.6)}
+.card-shot{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.card-shot img{width:100%;height:auto;aspect-ratio:1280/800;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.card:hover .card-shot img{transform:scale(1.06)}
+.card-body{padding:18px 19px 20px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.card-body h4{font-size:17px;font-weight:600}
+.card-sector{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--tint,var(--accent));white-space:nowrap}
+.card-body p{color:var(--muted);font-size:14.5px;line-height:1.55;flex:1}
+.card-url{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:4px;min-width:0}
+.card-url span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* closing tile — keeps the last row full and says the list is a sample */
+.card-more{
+  background:transparent;border-style:dashed;
+  justify-content:center;align-items:flex-start;
+  padding:28px 24px;gap:0;
+}
+.card-more:hover{border-style:solid;border-color:var(--accent);transform:translateY(-5px)}
+.card-more b{font-family:var(--font-display);font-size:42px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--accent)}
+.more-lead{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:9px}
+.more-sub{color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:16px}
+.more-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12.5px;color:var(--accent);margin-top:20px}
+.more-cta svg{width:14px;height:14px;transition:transform .2s}
+.card-more:hover .more-cta svg{transform:translateX(3px)}
+.card:hover .card-url{color:var(--accent)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:0 0 auto}
+
+/* ---------- capabilities ---------- */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:22px}
+.cap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;min-width:0;transition:border-color .3s,transform .3s}
+.cap:hover{border-color:var(--muted);transform:translateY(-3px)}
+.cap-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:20px;background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent)}
+.cap-ico svg{width:23px;height:23px}
+.cap h3{font-size:18.5px;font-weight:600;margin-bottom:10px}
+.cap p{color:var(--muted);font-size:15px}
+
+/* ---------- experience ---------- */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--accent),var(--line) 55%)}
+.job{position:relative;padding-bottom:40px}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-30px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.job.past::before{border-color:var(--line)}
+.job-when{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-bottom:5px}
+.job h3{font-size:20px;font-weight:600;margin-bottom:3px}
+.job-where{color:var(--accent);font-size:14.5px;font-weight:500;margin-bottom:12px}
+.job ul{margin:0;padding-left:17px;color:var(--muted);font-size:15px}
+.job li{margin-bottom:5px}
+.job li::marker{color:var(--line)}
+
+/* ---------- stack ---------- */
+.stack{display:grid;gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.srow{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:10px 26px;padding:18px 22px;border-top:1px solid var(--line)}
+.srow:first-child{border-top:0}
+.skey{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.04em;color:var(--accent)}
+.sval{display:flex;flex-wrap:wrap;gap:7px;min-width:0}
+
+/* ---------- background ---------- */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(26px,4vw,48px)}
+.cols h3{font-size:19px;font-weight:600;margin-bottom:18px}
+.cred{padding-block:14px;border-top:1px solid var(--line)}
+.cred:first-of-type{border-top:0;padding-top:0}
+.cred b{display:block;font-weight:600;font-size:15.5px}
+.cred span{display:block;font-family:var(--font-mono);font-size:12.5px;color:var(--muted);margin-top:4px}
+
+/* ---------- cv ---------- */
+.cv-wrap{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);
+  gap:clamp(32px,5vw,64px);align-items:center;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:22px;padding:clamp(28px,5vw,56px);
+}
+.cv-text h2{font-size:clamp(25px,4vw,38px);font-weight:700;margin-bottom:14px}
+.cv-text > p{color:var(--muted);max-width:46ch}
+.cv-meta{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px}
+.cv-meta span{
+  font-family:var(--font-mono);font-size:11.5px;color:var(--muted);
+  background:var(--raised);border:1px solid var(--line);border-radius:7px;padding:5px 10px;
+}
+.cv-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* two pages fanned out, front one lifts on hover */
+.cv-stack{
+  position:relative;border:0;background:none;padding:0;cursor:pointer;
+  aspect-ratio:1/1.12;min-width:0;display:block;
+}
+.cv-stack .pg{
+  position:absolute;width:76%;height:auto;border-radius:7px;
+  border:1px solid var(--line);background:#fff;
+  box-shadow:0 20px 44px -18px rgba(0,0,0,.6);
+  transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;
+}
+.cv-stack .pg2{top:3%;right:0;transform:rotate(5deg)}
+.cv-stack .pg1{top:9%;left:0;transform:rotate(-3deg)}
+.cv-stack:hover .pg2{transform:rotate(8deg) translate(6px,-8px)}
+.cv-stack:hover .pg1{transform:rotate(-5deg) translate(-6px,-12px);box-shadow:0 30px 58px -18px rgba(0,0,0,.7)}
+.cv-stack:focus-visible{outline:2px solid var(--accent);outline-offset:8px;border-radius:12px}
+.cv-hint{
+  position:absolute;left:50%;bottom:2%;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  font-family:var(--font-mono);font-size:11.5px;color:var(--ink);
+  background:var(--raised);border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+  opacity:0;transition:opacity .3s,transform .3s;
+}
+.cv-stack:hover .cv-hint,.cv-stack:focus-visible .cv-hint{opacity:1;transform:translateX(-50%) translateY(-4px)}
+@media (max-width:860px){
+  .cv-wrap{grid-template-columns:minmax(0,1fr)}
+  .cv-stack{aspect-ratio:1/.92;max-width:420px;margin-inline:auto;width:100%}
+  .cv-hint{opacity:1}
+}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--bg) 93%,#000);display:flex;flex-direction:column}
+@supports not (background:color-mix(in srgb,red 50%,blue)){ .lb{background:var(--bg)} }
+.lb[hidden]{display:none!important}
+.lb-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px clamp(16px,4vw,28px);border-bottom:1px solid var(--line);
+  background:var(--surface);flex:0 0 auto;
+}
+.lb-title{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+.lb-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding:clamp(16px,3vw,32px);display:flex;flex-direction:column;align-items:center;gap:20px;-webkit-overflow-scrolling:touch}
+.lb-scroll img{width:100%;max-width:860px;height:auto;border-radius:8px;border:1px solid var(--line);box-shadow:0 20px 50px -22px rgba(0,0,0,.7);background:#fff}
+body.lb-open{overflow:hidden}
+
+/* ---------- contact ---------- */
+.contact-wrap{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--surface);padding:clamp(30px,5.5vw,60px);overflow:hidden}
+.contact-wrap .mesh{z-index:0}
+.contact-in{position:relative;z-index:1}
+.contact-in h2{font-size:clamp(26px,4.4vw,40px);font-weight:700;margin-bottom:14px;max-width:20ch}
+.contact-in > p{color:var(--muted);max-width:52ch;margin-bottom:32px}
+.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+.ccard{background:var(--bg);border:1px solid var(--line);border-radius:13px;padding:18px;min-width:0;transition:border-color .25s}
+.ccard:hover{border-color:var(--muted)}
+.clabel{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.clabel svg{width:14px;height:14px;flex:0 0 auto}
+.cvalue{display:block;font-family:var(--font-mono);font-size:13.5px;word-break:break-word;user-select:all;color:var(--ink)}
+.ccard a.cvalue{color:var(--accent);user-select:auto}
+.ccard a.cvalue:hover{text-decoration:underline;text-underline-offset:3px}
+.copy{margin-top:13px;font-family:var(--font-mono);font-size:11.5px;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:6px 11px;cursor:pointer;transition:color .2s,border-color .2s}
+.copy:hover{color:var(--ink);border-color:var(--muted)}
+.copy[data-done]{color:var(--live);border-color:var(--live)}
+
+footer{border-top:1px solid var(--line);padding-block:30px;position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.foot a:hover{color:var(--accent)}
+
+@media (max-width:620px){
+  .srow{grid-template-columns:minmax(0,1fr);gap:9px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-cta .btn{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="shell nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><img src="assets/freddy-avatar.jpg" alt="Freddy Hany Edward" width="34" height="34"></span>
+      <span>Freddy Hany Edward</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#work">work</a>
+      <a href="#services">services</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#cv">cv</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="mesh" aria-hidden="true">
+      <span class="blob a"></span><span class="blob b"></span><span class="blob c"></span>
+    </div>
+    <div class="shell hero-in">
+      <div class="tagline rv"><span class="pulse"></span> Cairo, Egypt &middot; Open to work</div>
+      <h1 class="rv">Software developer<br>building things that <span class="grad">stay shipped</span>.</h1>
+      <p class="hero-role rv">WordPress &amp; Laravel &middot; PHP &middot; MySQL</p>
+      <p class="hero-lead rv">I build and ship production websites and web applications — WordPress from theme to plugin, Laravel and PHP behind them, and the deployment and upkeep that keeps them running.</p>
+      <p class="hero-sub rv">Three years across an agency, an in-house team and freelance work, for clients in Egypt, the Gulf and the UK. A selection is below — every one of them live, and every link goes to the real thing.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-primary" href="#work">See the work
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#contact">Contact</a>
+      </div>
+      <div class="stats rv">
+        <div class="stat"><b data-count="3" data-suffix="+">3+</b><span>Years building</span></div>
+        <div class="stat"><b data-count="15" data-suffix="+">15+</b><span>Live projects</span></div>
+        <div class="stat"><b data-count="3">3</b><span>Countries shipped to</span></div>
+        <div class="stat"><b data-count="2">2</b><span>Languages, RTL included</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-track">
+      <span>PHP</span><span>Laravel</span><span>WordPress</span><span>WooCommerce</span><span>MySQL</span><span>JavaScript</span><span>React</span><span>REST APIs</span><span>Elementor</span><span>ACF</span><span>Git</span><span>Bootstrap</span><span>Shopify</span><span>Core Web Vitals</span>
+      <span>PHP</span><span>Laravel</span><span>WordPress</span><span>WooCommerce</span><span>MySQL</span><span>JavaScript</span><span>React</span><span>REST APIs</span><span>Elementor</span><span>ACF</span><span>Git</span><span>Bootstrap</span><span>Shopify</span><span>Core Web Vitals</span>
+    </div>
+  </div>
+
+  <!-- ================= WORK ================= -->
+  <section id="work">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">Selected work</div>
+        <h2>A sample of the work. Three that show the range.</h2>
+        <p>A custom application written from scratch, a content platform in Arabic, and a storefront that takes real money — then a selection of the rest. This is a sample, not the full list.</p>
+      </div>
+
+      <div class="feat">
+
+        <article class="case rv" style="--tint:#2FA37A">
+          <div class="case-text">
+            <div class="case-kind">Custom application</div>
+            <h3>Bless Dental Clinic</h3>
+            <p><strong>A clinic management system written from scratch in PHP.</strong> No CMS underneath it — an application built around how the practice actually runs, behind a staff login, entirely in Arabic and right-to-left.</p>
+            <p>Ten modules cover the working day: a patient register and per-patient file, a visits log, bookings, case follow-ups, doctor reports, services, and the financial accounts. The dashboard opens on live figures — patient count, today&rsquo;s visits and revenue, outstanding balances, the week&rsquo;s bookings — over a seven-day revenue chart. The public site in front of it carries treatments and online consultation booking.</p>
+            <div class="chips"><span class="chip">PHP 8.3</span><span class="chip">MySQL</span><span class="chip">Auth &amp; roles</span><span class="chip">Reporting</span><span class="chip">Arabic / RTL</span><span class="chip">Freelance</span></div>
+            <a class="visit" href="https://bless-dental.net" target="_blank" rel="noopener">bless-dental.net
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="shot">
+            <div class="frame">
+              <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">bless-dental.net/system</div></div>
+              <img src="assets/blessdental.jpg" alt="Bless Dental clinic management system dashboard" loading="lazy" width="1280" height="800">
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" style="--tint:#1C6B80">
+          <div class="case-text">
+            <div class="case-kind">Content platform</div>
+            <h3>Spark</h3>
+            <p><strong>An education platform for an Arabic-language youth programme.</strong> A 48-lesson curriculum organised into four stages — identity, salvation, relationships and mission — with material split by age group across 8–12 and 13–15.</p>
+            <p>Course pages sit behind member accounts, with separate resource libraries for teachers and for parents, plus a magazine section. Built right-to-left from the ground up.</p>
+            <div class="chips"><span class="chip">WordPress</span><span class="chip">Custom theme</span><span class="chip">Member accounts</span><span class="chip">Arabic / RTL</span><span class="chip">WebOps</span></div>
+            <a class="visit" href="https://sparkyouthclub.com" target="_blank" rel="noopener">sparkyouthclub.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="shot">
+            <div class="frame">
+              <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">sparkyouthclub.com</div></div>
+              <img src="assets/spark.jpg" alt="Spark youth programme homepage" loading="lazy" width="1280" height="800">
+            </div>
+          </div>
+        </article>
+
+        <article class="case rv" style="--tint:#3B5BDB">
+          <div class="case-text">
+            <div class="case-kind">Agency platform</div>
+            <h3>WebOps</h3>
+            <p><strong>The agency&rsquo;s own platform, and the widest brief I&rsquo;ve worked on.</strong> One site carrying six service lines — custom software, mobile apps, WordPress development, managed cloud hosting, maintenance and AI sales agents — without turning into a wall of text.</p>
+            <p>Alongside the marketing side sit three self-serve products: an AI website builder, WordPress hosting and domain registration, each with its own path through to an instant quotation.</p>
+            <div class="chips"><span class="chip">WordPress</span><span class="chip">Custom theme</span><span class="chip">Service architecture</span><span class="chip">Instant quotation</span><span class="chip">WebOps</span></div>
+            <a class="visit" href="https://thewebops.com" target="_blank" rel="noopener">thewebops.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+          <div class="shot">
+            <div class="frame">
+              <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">thewebops.com</div></div>
+              <img src="assets/webops.jpg" alt="WebOps agency platform" loading="lazy" width="1280" height="800">
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="grid">
+
+        <a class="card rv" href="https://soumiswear.com" target="_blank" rel="noopener" style="--tint:#C2703F">
+          <div class="card-shot"><img src="assets/soumiswear.jpg" alt="Soumi's Wear online store" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>Soumi&rsquo;s Wear</h4><span class="card-sector">E-commerce</span></div>
+            <p>Apparel and swimwear label — cotton sets and swimwear with full checkout, cash-on-delivery, shipping thresholds and order tracking.</p>
+            <div class="card-url"><span class="dot"></span><span>soumiswear.com</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://ouaheinteriors.com" target="_blank" rel="noopener" style="--tint:#B08D57">
+          <div class="card-shot"><img src="assets/ouahe.jpg" alt="OUAHĒ Interiors website" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>OUAHĒ Interiors</h4><span class="card-sector">Interiors · UK</span></div>
+            <p>Boutique interior-design studio in Glasgow. Portfolio, packages, service breakdown and consultation booking.</p>
+            <div class="card-url"><span class="dot"></span><span>ouaheinteriors.com</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://oceanblue-studios.com" target="_blank" rel="noopener" style="--tint:#14706B">
+          <div class="card-shot"><img src="assets/oceanblue.jpg" alt="Ocean Blue Studios website" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>Ocean Blue Studios</h4><span class="card-sector">Hospitality</span></div>
+            <p>Serviced apartments in Heliopolis, Cairo. Room types from studios to three-bedroom apartments, availability search and online reservations.</p>
+            <div class="card-url"><span class="dot"></span><span>oceanblue-studios.com</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://lavie.ergasti.digital" target="_blank" rel="noopener" style="--tint:#D4567C">
+          <div class="card-shot"><img src="assets/lavie.jpg" alt="La Vie en Rose florist storefront" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>La Vie en Rose</h4><span class="card-sector">Florist · Retail</span></div>
+            <p>Florist and gifting storefront — signature and custom bouquets, occasion collections, same-day delivery and bank-card checkout.</p>
+            <div class="card-url"><span class="dot"></span><span>lavie.ergasti.digital</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://eighteenplus.ergasti.digital" target="_blank" rel="noopener" style="--tint:#9A7B5F">
+          <div class="card-shot"><img src="assets/eighteen.jpg" alt="18Plus beauty storefront" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>18Plus</h4><span class="card-sector">Beauty · Retail</span></div>
+            <p>Beauty and cosmetics brand store with product boxes, offers, business enquiries and a tips section behind a custom template set.</p>
+            <div class="card-url"><span class="dot"></span><span>eighteenplus.ergasti.digital</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://sawirisorthopaedic.com" target="_blank" rel="noopener" style="--tint:#2D94D6">
+          <div class="card-shot"><img src="assets/sawiris.jpg" alt="Sawiris Orthopaedic clinic website" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>Sawiris Orthopaedic</h4><span class="card-sector">Healthcare</span></div>
+            <p>Practice site for an orthopaedic and spine consultant — treatments, profile and appointment enquiries, in Arabic.</p>
+            <div class="card-url"><span class="dot"></span><span>sawirisorthopaedic.com</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://tredcoelsayad.com" target="_blank" rel="noopener" style="--tint:#2E4374">
+          <div class="card-shot"><img src="assets/tradco.jpg" alt="Tradco El Sayad website" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>Tradco El Sayad</h4><span class="card-sector">Trading</span></div>
+            <p>Trading and distribution group running since 1935, with a training academy and experience centre alongside the product catalogue.</p>
+            <div class="card-url"><span class="dot"></span><span>tredcoelsayad.com</span></div>
+          </div>
+        </a>
+
+        <a class="card rv" href="https://gpp-ae.com" target="_blank" rel="noopener" style="--tint:#44637F">
+          <div class="card-shot"><img src="assets/gpp.jpg" alt="GPP corporate website" loading="lazy" width="1280" height="800"></div>
+          <div class="card-body">
+            <div class="card-top"><h4>GPP</h4><span class="card-sector">Corporate · UAE</span></div>
+            <p>Corporate site for a UAE-based group — products, process and sustainability across a multi-section build.</p>
+            <div class="card-url"><span class="dot"></span><span>gpp-ae.com</span></div>
+          </div>
+        </a>
+
+        <a class="card card-more rv" href="#contact">
+          <b>15+</b>
+          <span class="more-lead">sites shipped to date</span>
+          <span class="more-sub">The eleven above are a sample. Some client work stays private, and some sits behind a login.</span>
+          <span class="more-cta">Ask about the rest
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">What I take on</div>
+        <h2>Three kinds of work, one standard.</h2>
+      </div>
+      <div class="caps">
+        <div class="cap rv">
+          <div class="cap-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 21 7.4l-9 4.6-9-4.6 9-4.6Z"/><path d="m3 12.2 9 4.6 9-4.6"/><path d="m3 16.9 9 4.6 9-4.6"/></svg>
+          </div>
+          <h3>WordPress, properly built</h3>
+          <p>Custom themes and plugins instead of page-builder sprawl — ACF for structured content, WooCommerce for stores, and a back-end the client can run without calling me every week.</p>
+        </div>
+        <div class="cap rv">
+          <div class="cap-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.6" rx="7.6" ry="3.1"/><path d="M4.4 5.6v12.8c0 1.7 3.4 3.1 7.6 3.1s7.6-1.4 7.6-3.1V5.6"/><path d="M4.4 12c0 1.7 3.4 3.1 7.6 3.1s7.6-1.4 7.6-3.1"/></svg>
+          </div>
+          <h3>Laravel &amp; PHP applications</h3>
+          <p>Where a website is not enough: relational schema design, Eloquent models, authentication and role-based access, REST APIs documented well enough for whoever picks it up next.</p>
+        </div>
+        <div class="cap rv">
+          <div class="cap-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5a8.5 8.5 0 1 1 8.5-8.5"/><path d="m12 12 5-3.4"/><circle cx="12" cy="12" r="1.3"/><path d="M20.4 14.4 22 15m-2.6 2.6 1.3 1.1"/></svg>
+          </div>
+          <h3>Launch it, then keep it alive</h3>
+          <p>Staging, deployment to managed cloud hosting, domains and DNS — then page-speed, Core Web Vitals and on-page SEO, including on inherited code I did not write.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">Experience</div>
+        <h2>Where I&rsquo;ve built.</h2>
+      </div>
+      <div class="tl">
+
+        <div class="job rv">
+          <div class="job-when">02/2026 — Present</div>
+          <h3>Software Developer</h3>
+          <div class="job-where">WebOps · Cairo, Egypt</div>
+          <ul>
+            <li>Build and ship custom WordPress themes and plugins for corporate, healthcare and e-commerce clients.</li>
+            <li>Develop Laravel/PHP back-end features, database schemas and REST API integrations with third-party services.</li>
+            <li>Own releases end to end — staging, deployment to managed cloud hosting, maintenance and client support.</li>
+            <li>Improve page-speed, Core Web Vitals, on-page SEO and cross-browser behaviour on new and inherited codebases.</li>
+          </ul>
+        </div>
+
+        <div class="job past rv">
+          <div class="job-when">10/2024 — 01/2026</div>
+          <h3>Back-End Developer</h3>
+          <div class="job-where">Ergasti Digital · Cairo, Egypt</div>
+          <ul>
+            <li>Delivered production websites and web applications across hospitality, retail, healthcare and industrial clients.</li>
+            <li>Built back-end services in Laravel and PHP with MySQL — schema design, Eloquent models, authentication and role-based access.</li>
+            <li>Developed REST APIs and integrated payment, booking and third-party platform endpoints.</li>
+            <li>Turned design hand-offs into responsive, cross-browser front-ends alongside designers and project managers.</li>
+          </ul>
+        </div>
+
+        <div class="job past rv">
+          <div class="job-when">03/2024 — 09/2024</div>
+          <h3>Web Developer &amp; IT Support</h3>
+          <div class="job-where">TG Industrial · Cairo, Egypt</div>
+          <ul>
+            <li>Designed, built and launched the company&rsquo;s corporate website as sole developer.</li>
+            <li>Managed hosting, domains, business email and ongoing content updates.</li>
+            <li>Provided day-to-day IT and help-desk support across hardware, software and network issues.</li>
+          </ul>
+        </div>
+
+        <div class="job past rv">
+          <div class="job-when">11/2023 — 12/2023</div>
+          <h3>Web Developer, Intern</h3>
+          <div class="job-where">Madaeen Al-Jazira for IT</div>
+          <ul><li>Built internal web modules with AngularJS, ASP.NET Core and SQL Server inside an existing enterprise codebase.</li></ul>
+        </div>
+
+        <div class="job past rv">
+          <div class="job-when">05/2023 — 06/2023</div>
+          <h3>Web Developer, Intern</h3>
+          <div class="job-where">2B</div>
+          <ul><li>Developed responsive pages and data-driven features with HTML, CSS, JavaScript, PHP and MySQL.</li></ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section id="stack">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">Stack</div>
+        <h2>What I work with.</h2>
+      </div>
+      <div class="stack rv">
+        <div class="srow"><div class="skey">Back-end</div><div class="sval">
+          <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">MySQL</span><span class="chip">REST APIs</span><span class="chip">Eloquent ORM</span><span class="chip">MVC</span>
+        </div></div>
+        <div class="srow"><div class="skey">CMS &amp; commerce</div><div class="sval">
+          <span class="chip">WordPress</span><span class="chip">Custom themes</span><span class="chip">Custom plugins</span><span class="chip">WooCommerce</span><span class="chip">ACF</span><span class="chip">Elementor</span><span class="chip">Shopify</span>
+        </div></div>
+        <div class="srow"><div class="skey">Front-end</div><div class="sval">
+          <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Bootstrap</span><span class="chip">Responsive &amp; RTL</span>
+        </div></div>
+        <div class="srow"><div class="skey">Tools &amp; ops</div><div class="sval">
+          <span class="chip">Git &amp; GitHub</span><span class="chip">Composer</span><span class="chip">npm</span><span class="chip">Postman</span><span class="chip">cPanel</span><span class="chip">Managed cloud hosting</span><span class="chip">DNS</span>
+        </div></div>
+        <div class="srow"><div class="skey">Also worked with</div><div class="sval">
+          <span class="chip">AngularJS</span><span class="chip">ASP.NET Core</span><span class="chip">SQL Server</span>
+        </div></div>
+        <div class="srow"><div class="skey">Practices</div><div class="sval">
+          <span class="chip">Core Web Vitals</span><span class="chip">On-page SEO</span><span class="chip">Legacy debugging</span><span class="chip">Requirements gathering</span>
+        </div></div>
+        <div class="srow"><div class="skey">Languages</div><div class="sval">
+          <span class="chip">Arabic — native</span><span class="chip">English — professional</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BACKGROUND ================= -->
+  <section id="background">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">Background</div>
+        <h2>Education &amp; training.</h2>
+      </div>
+      <div class="cols rv">
+        <div>
+          <h3>Education</h3>
+          <div class="cred"><b>B.Sc. in Computers and Informatics</b><span>Zagazig University · 2021</span></div>
+        </div>
+        <div>
+          <h3>Certifications</h3>
+          <div class="cred"><b>Master Laravel 12 &amp; PHP: Beginner to Advanced</b><span>Piotr Jura · Udemy</span></div>
+          <div class="cred"><b>SkillsBuild Digital Training: Web Development Track</b><span>EFE Egypt</span></div>
+          <div class="cred"><b>Full Stack Web Development</b><span>Creativo Academy</span></div>
+          <div class="cred"><b>HTML, JavaScript &amp; Bootstrap Certification</b><span>YouAccel Training · Udemy</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CV ================= -->
+  <section id="cv">
+    <div class="shell">
+      <div class="cv-wrap rv">
+        <div class="cv-text">
+          <div class="eyebrow">Résumé</div>
+          <h2>The short version, on paper.</h2>
+          <p>Two pages — experience, the full project list with links, stack and certifications. Same content as this site, in the format a hiring process actually wants.</p>
+          <div class="cv-meta">
+            <span>PDF</span><span>2 pages</span><span>107&nbsp;KB</span><span id="cvDate">Updated Nov 2026</span>
+          </div>
+          <div class="cv-cta">
+            <a class="btn btn-primary" href="cv/Freddy-Hany-Edward-CV.pdf" download="Freddy-Hany-Edward-CV.pdf">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
+              Download CV
+            </a>
+            <button class="btn btn-ghost" type="button" id="cvOpen">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+              Preview
+            </button>
+          </div>
+        </div>
+
+        <button class="cv-stack" type="button" id="cvStack" aria-label="Preview the CV">
+          <img class="pg pg2" src="assets/cv-thumb-2.jpg" alt="" width="714" height="1010" loading="lazy">
+          <img class="pg pg1" src="assets/cv-thumb-1.jpg" alt="First page of Freddy Hany Edward's CV" width="714" height="1010" loading="lazy">
+          <span class="cv-hint">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+            Click to read
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="lb" id="lb" hidden>
+    <div class="lb-bar">
+      <span class="lb-title">Freddy Hany Edward — CV</span>
+      <div class="lb-actions">
+        <a class="btn btn-primary" href="cv/Freddy-Hany-Edward-CV.pdf" download="Freddy-Hany-Edward-CV.pdf">Download PDF</a>
+        <button class="icon-btn" type="button" id="lbClose" aria-label="Close preview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="lb-scroll" id="lbScroll">
+      <img src="assets/cv-page-1.jpg" alt="CV page 1" width="1190" height="1684" loading="lazy">
+      <img src="assets/cv-page-2.jpg" alt="CV page 2" width="1190" height="1684" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="shell">
+      <div class="contact-wrap rv">
+        <div class="mesh" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span></div>
+        <div class="contact-in">
+          <div class="eyebrow">Contact</div>
+          <h2>Got something that needs building?</h2>
+          <p>Open to WordPress and Laravel work — new builds, rescues of inherited code, or ongoing maintenance. Fastest reply is by email.</p>
+          <div class="ccards">
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"/><path d="m3.4 6.6 8.6 6 8.6-6"/></svg>
+                Email
+              </div>
+              <div class="cvalue" id="email">freddyhany99@gmail.com</div>
+              <button class="copy" type="button" data-copy="email" data-label="Copy address">Copy address</button>
+            </div>
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.74.46 3.45 1.33 4.95L2.05 22l5.3-1.38a9.86 9.86 0 0 0 4.69 1.19h.004c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7a9.82 9.82 0 0 0-7-2.91Zm0 18.05h-.004a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.03-.2-.31a8.17 8.17 0 0 1-1.25-4.37c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.17 8.17 0 0 1 2.41 5.82c0 4.54-3.7 8.22-8.27 8.22Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.19-.53.06-.25-.12-1.05-.38-1.99-1.23-.74-.65-1.23-1.46-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06s.89 2.39 1.01 2.56c.12.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+                WhatsApp
+              </div>
+              <a class="cvalue" id="phone" href="https://wa.me/201210905008" target="_blank" rel="noopener">+20 121 090 5008</a>
+              <button class="copy" type="button" data-copy="phone" data-label="Copy number">Copy number</button>
+            </div>
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.49.09.67-.21.67-.47v-1.8c-2.73.6-3.3-1.17-3.3-1.17-.45-1.14-1.1-1.44-1.1-1.44-.9-.61.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.32 1.08 2.89.82.09-.64.35-1.08.63-1.33-2.18-.25-4.47-1.09-4.47-4.85 0-1.07.38-1.95 1.01-2.63-.1-.25-.44-1.25.1-2.6 0 0 .83-.27 2.71 1a9.4 9.4 0 0 1 4.94 0c1.88-1.27 2.7-1 2.7-1 .55 1.35.2 2.35.1 2.6.63.68 1.01 1.56 1.01 2.63 0 3.77-2.29 4.6-4.48 4.84.36.31.67.91.67 1.83v2.72c0 .26.18.57.68.47A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+                GitHub
+              </div>
+              <a class="cvalue" href="https://github.com/freddy9910" target="_blank" rel="noopener">github.com/freddy9910</a>
+            </div>
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.03 8.9H2.9V21h3.13V8.9ZM4.47 3.2a1.82 1.82 0 1 0 0 3.64 1.82 1.82 0 0 0 0-3.64ZM21.1 13.53c0-3.23-1.73-4.74-4.03-4.74-1.86 0-2.69 1.02-3.15 1.74V8.9h-3.13c.04.88 0 12.1 0 12.1h3.13v-6.76c0-.28.02-.56.1-.76.23-.56.74-1.14 1.6-1.14 1.13 0 1.58.86 1.58 2.12V21h3.13v-7.47h-.23Z"/></svg>
+                LinkedIn
+              </div>
+              <a class="cvalue" href="https://linkedin.com/in/freddy-hany" target="_blank" rel="noopener">linkedin.com/in/freddy-hany</a>
+            </div>
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+                Instagram
+              </div>
+              <a class="cvalue" href="https://www.instagram.com/freddy__hany" target="_blank" rel="noopener">@freddy__hany</a>
+            </div>
+            <div class="ccard">
+              <div class="clabel">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
+                Facebook
+              </div>
+              <a class="cvalue" href="https://www.facebook.com/share/19zJMpYqp7/" target="_blank" rel="noopener">Freddy Hany</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell foot">
+    <span>© <span id="yr">2026</span> Freddy Hany Edward — Cairo, Egypt</span>
+    <span>Built by hand, no template</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+  root.classList.add("js");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- theme ---- */
+  var saved = null;
+  try{ saved = localStorage.getItem("fhe-theme"); }catch(e){}
+  if(saved === "light" || saved === "dark"){ root.setAttribute("data-theme", saved); }
+  var tBtn = document.getElementById("theme");
+  if(tBtn){
+    tBtn.addEventListener("click", function(){
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      var m = document.querySelector('meta[name="theme-color"]');
+      if(m) m.setAttribute("content", next === "light" ? "#FAFAFB" : "#0A0B0D");
+      try{ localStorage.setItem("fhe-theme", next); }catch(e){}
+    });
+  }
+
+  /* ---- scroll progress + sticky nav ---- */
+  var prog = document.getElementById("prog");
+  var nav  = document.getElementById("nav");
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(prog) prog.style.transform = "scaleX(" + (h > 0 ? Math.min(y / h, 1) : 0) + ")";
+    if(nav) nav.classList.toggle("stuck", y > 12);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if(!ticking){ ticking = true; window.requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  var items = Array.prototype.slice.call(document.querySelectorAll(".rv"));
+  if(reduce || !("IntersectionObserver" in window)){
+    items.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var el = en.target;
+          var sibs = el.parentNode ? Array.prototype.slice.call(el.parentNode.children).filter(function(n){return n.classList && n.classList.contains("rv");}) : [];
+          var i = Math.max(0, sibs.indexOf(el));
+          el.style.transitionDelay = Math.min(i * 70, 280) + "ms";
+          el.classList.add("in");
+          io.unobserve(el);
+        }
+      });
+    }, {rootMargin:"0px 0px -8% 0px", threshold:0.08});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- count-up stats ---- */
+  var nums = Array.prototype.slice.call(document.querySelectorAll("[data-count]"));
+  function runCount(el){
+    var target = parseFloat(el.getAttribute("data-count")) || 0;
+    var suffix = el.getAttribute("data-suffix") || "";
+    if(reduce){ el.textContent = target + suffix; return; }
+    var dur = 1100, t0 = null;
+    function step(ts){
+      if(t0 === null) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if(p < 1) window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+  if("IntersectionObserver" in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ runCount(en.target); io2.unobserve(en.target); }
+      });
+    }, {threshold:0.5});
+    nums.forEach(function(el){ io2.observe(el); });
+  }
+
+  /* ---- active section in nav ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute("href")); }).filter(Boolean);
+  if("IntersectionObserver" in window && secs.length){
+    var io3 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id); });
+        }
+      });
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    secs.forEach(function(s){ io3.observe(s); });
+  }
+
+  /* ---- copy buttons ---- */
+  Array.prototype.slice.call(document.querySelectorAll("[data-copy]")).forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var src = document.getElementById(btn.getAttribute("data-copy"));
+      if(!src) return;
+      var label = btn.getAttribute("data-label");
+      var text = src.textContent.trim();
+      function done(){
+        btn.textContent = "Copied";
+        btn.setAttribute("data-done","1");
+        setTimeout(function(){ btn.textContent = label; btn.removeAttribute("data-done"); }, 1800);
+      }
+      function selectInstead(){
+        try{
+          var r = document.createRange(); r.selectNodeContents(src);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          btn.textContent = "Selected — press copy";
+          setTimeout(function(){ btn.textContent = label; }, 2400);
+        }catch(e){}
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(selectInstead);
+      } else { selectInstead(); }
+    });
+  });
+
+  /* ---- CV lightbox ---- */
+  var lb = document.getElementById("lb");
+  var lbScroll = document.getElementById("lbScroll");
+  var lastFocus = null;
+  function openLb(){
+    if(!lb) return;
+    lastFocus = document.activeElement;
+    lb.hidden = false;
+    document.body.classList.add("lb-open");
+    if(lbScroll) lbScroll.scrollTop = 0;
+    var close = document.getElementById("lbClose");
+    if(close) close.focus();
+  }
+  function closeLb(){
+    if(!lb || lb.hidden) return;
+    lb.hidden = true;
+    document.body.classList.remove("lb-open");
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  ["cvOpen","cvStack"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener("click", openLb);
+  });
+  var lbClose = document.getElementById("lbClose");
+  if(lbClose) lbClose.addEventListener("click", closeLb);
+  if(lb) lb.addEventListener("click", function(e){
+    if(e.target === lb || e.target === lbScroll) closeLb();
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeLb();
+  });
+
+  var yr = document.getElementById("yr");
+  if(yr) yr.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
