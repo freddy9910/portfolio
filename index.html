@@ -328,6 +328,25 @@ html[data-theme="light"] .frame{box-shadow:0 26px 60px -28px rgba(16,22,40,.4)}
 .card:hover .card-url{color:var(--accent)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--live);flex:0 0 auto}
 
+/* ---------- open source ---------- */
+.repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px}
+.repo{
+  display:flex;flex-direction:column;min-width:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(22px,3vw,30px);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;
+}
+.repo:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:0 22px 44px -24px rgba(0,0,0,.6)}
+.repo-head{display:flex;align-items:center;gap:11px;margin-bottom:14px;min-width:0}
+.repo-ico{width:21px;height:21px;flex:0 0 auto;color:var(--muted)}
+.repo:hover .repo-ico{color:var(--accent)}
+.repo-head h3{font-family:var(--font-mono);font-size:16px;font-weight:500;letter-spacing:-.01em;min-width:0;overflow-wrap:anywhere}
+.repo > p{color:var(--muted);font-size:15px;flex:1}
+.repo .chips{margin:18px 0 0}
+.repo-go{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12.5px;color:var(--accent);margin-top:18px}
+.repo-go svg{width:13px;height:13px;transition:transform .2s}
+.repo:hover .repo-go svg{transform:translate(2px,-2px)}
+
 /* ---------- capabilities ---------- */
 .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:22px}
 .cap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;min-width:0;transition:border-color .3s,transform .3s}
@@ -469,6 +488,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;position:relative;z-i
     </a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#work">work</a>
+      <a href="#code">code</a>
       <a href="#services">services</a>
       <a href="#experience">experience</a>
       <a href="#stack">stack</a>
@@ -623,7 +643,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;position:relative;z-i
           <div class="card-shot"><img src="assets/lavie.jpg" alt="La Vie en Rose florist storefront" loading="lazy" width="1280" height="800"></div>
           <div class="card-body">
             <div class="card-top"><h4>La Vie en Rose</h4><span class="card-sector">Florist · Retail</span></div>
-            <p>Florist and gifting storefront — signature and custom bouquets, occasion collections, same-day delivery and bank-card checkout.</p>
+            <p>Florist, bouquet and event-planning storefront — signature and custom bouquets, occasion collections, delivery thresholds and card checkout.</p>
             <div class="card-url"><span class="dot"></span><span>lavie.ergasti.digital</span></div>
           </div>
         </a>
@@ -679,6 +699,49 @@ footer{border-top:1px solid var(--line);padding-block:30px;position:relative;z-i
         Twelve of 15+ sites shipped. Some client work stays private, and some sits behind a login.
         <a href="#contact">Ask about the rest &rarr;</a>
       </p>
+    </div>
+  </section>
+
+  <!-- ================= OPEN SOURCE ================= -->
+  <section id="code">
+    <div class="shell">
+      <div class="sec-head rv">
+        <div class="eyebrow">Code</div>
+        <h2>Two you can read.</h2>
+        <p>Client work mostly lives behind a login. These two are public, so you can judge the code rather than the screenshot.</p>
+      </div>
+
+      <div class="repos">
+
+        <a class="repo rv" href="https://github.com/freddy9910/simple-page-builder" target="_blank" rel="noopener">
+          <div class="repo-head">
+            <svg class="repo-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.49.09.67-.21.67-.47v-1.8c-2.73.6-3.3-1.17-3.3-1.17-.45-1.14-1.1-1.44-1.1-1.44-.9-.61.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.32 1.08 2.89.82.09-.64.35-1.08.63-1.33-2.18-.25-4.47-1.09-4.47-4.85 0-1.07.38-1.95 1.01-2.63-.1-.25-.44-1.25.1-2.6 0 0 .83-.27 2.71 1a9.4 9.4 0 0 1 4.94 0c1.88-1.27 2.7-1 2.7-1 .55 1.35.2 2.35.1 2.6.63.68 1.01 1.56 1.01 2.63 0 3.77-2.29 4.6-4.48 4.84.36.31.67.91.67 1.83v2.72c0 .26.18.57.68.47A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+            <h3>simple-page-builder</h3>
+          </div>
+          <p>A WordPress plugin that exposes a secure REST endpoint for creating pages in bulk from an external application. API keys are hashed with WordPress&rsquo;s own hashing, requests are rate-limited per key and written to an audit log, and webhook payloads are signed with HMAC-SHA256.</p>
+          <div class="chips">
+            <span class="chip">PHP</span><span class="chip">WordPress</span><span class="chip">REST API</span><span class="chip">Webhooks</span><span class="chip">GPL-2.0</span>
+          </div>
+          <span class="repo-go">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </a>
+
+        <a class="repo rv" href="https://github.com/freddy9910/hotel-booking-notifier" target="_blank" rel="noopener">
+          <div class="repo-head">
+            <svg class="repo-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.49.09.67-.21.67-.47v-1.8c-2.73.6-3.3-1.17-3.3-1.17-.45-1.14-1.1-1.44-1.1-1.44-.9-.61.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.32 1.08 2.89.82.09-.64.35-1.08.63-1.33-2.18-.25-4.47-1.09-4.47-4.85 0-1.07.38-1.95 1.01-2.63-.1-.25-.44-1.25.1-2.6 0 0 .83-.27 2.71 1a9.4 9.4 0 0 1 4.94 0c1.88-1.27 2.7-1 2.7-1 .55 1.35.2 2.35.1 2.6.63.68 1.01 1.56 1.01 2.63 0 3.77-2.29 4.6-4.48 4.84.36.31.67.91.67 1.83v2.72c0 .26.18.57.68.47A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+            <h3>hotel-booking-notifier</h3>
+          </div>
+          <p>A Laravel 12 service that pulls reservations from the eZee PMS, normalises them, and sends templated WhatsApp notifications on arrival and after checkout. Per-minute send limits, a full delivery log, and a dashboard where staff manage templates and retry failed messages.</p>
+          <div class="chips">
+            <span class="chip">Laravel 12</span><span class="chip">PHP 8.2</span><span class="chip">Eloquent</span><span class="chip">Queues</span><span class="chip">API integration</span>
+          </div>
+          <span class="repo-go">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </a>
+
+      </div>
     </div>
   </section>
 
@@ -842,7 +905,7 @@ footer{border-top:1px solid var(--line);padding-block:30px;position:relative;z-i
           <h2>The short version, on paper.</h2>
           <p>Two pages — experience, the full project list with links, stack and certifications. Same content as this site, in the format a hiring process actually wants.</p>
           <div class="cv-meta">
-            <span>PDF</span><span>2 pages</span><span>109&nbsp;KB</span><span id="cvDate">Updated Nov 2026</span>
+            <span>PDF</span><span>2 pages</span><span>112&nbsp;KB</span><span id="cvDate">Updated Nov 2026</span>
           </div>
           <div class="cv-cta">
             <a class="btn btn-primary" href="cv/Freddy-Hany-Edward-CV.pdf" download="Freddy-Hany-Edward-CV.pdf">
